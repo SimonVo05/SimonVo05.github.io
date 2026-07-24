@@ -1,0 +1,27 @@
+# Tracks local overrides of gem-owned files, per docs/BOUNDARIES.md ("Local site overrides are
+# still valid ... acknowledge them with `bundle exec al-folio upgrade overrides accept`").
+#
+# NOTE: this file was authored by hand because Ruby/Bundler were not available in the environment
+# that made these changes, so the real `bundle exec al-folio upgrade overrides audit` command could
+# not be run. `upstream_sha256` values below are left as `unknown` placeholders. Run the audit
+# command for real once you have the toolchain available, and let it regenerate this file (or at
+# least fill in the upstream hashes) so future `al_folio_core` upgrades can flag drift correctly.
+overrides:
+  - path: _layouts/about.liquid
+    owner_gem: al_folio_core
+    reason: >
+      Full reskin of the homepage into a single-column academic layout (header + photo, About,
+      Research, Selected Publications, News, Awards, Services, Miscellaneous), modeled after
+      https://nguyendung.tech/. Self-contained (own <head>/<body>), does not inherit `default`.
+    upstream_sha256: unknown
+    local_sha256: unknown
+
+  - path: _layouts/default.liquid
+    owner_gem: al_folio_core
+    reason: >
+      Site-wide chrome (nav/footer) simplified to match the new minimal look, while still invoking
+      the documented plugin tags (al_search_assets, al_icons_styles, al_cookie_*, al_math_*,
+      al_charts_scripts, al_img_tools_*, al_analytics_scripts, al_newsletter_scripts) so existing
+      features degrade gracefully rather than silently disappearing.
+    upstream_sha256: unknown
+    local_sha256: unknown

@@ -16,15 +16,34 @@ profile:
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
+research_statement: >
+  I am broadly interested in [describe your research interests here].<br>My papers can be found below.
+
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
-latest_posts:
+awards:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  items:
+    - year: 2026
+      description: Award or honor description goes here.
+    - year: 2025
+      description: Another award or honor goes here.
+
+services:
+  enabled: true
+  items:
+    - title: Role or position title
+      org: Organization or department name
+    - title: Another role title
+      org: Another organization name
+
+miscellaneous:
+  enabled: true
+  items:
+    - A hobby, resource, or side project note goes here, with a [link](#) if needed.
 ---
 
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.

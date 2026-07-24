@@ -1,0 +1,297 @@
+/*
+ * Site-wide theme override: minimal single-column academic look
+ * (Merriweather serif + light background + single blue accent),
+ * modeled after https://nguyendung.tech/.
+ * Tracked as a local override in .al-folio-overrides.yml.
+ */
+
+:root {
+  --bg-color: #fff;
+  --text-color: #2d3748;
+  --text-secondary: #4a5568;
+  --accent-color: #4a74b9;
+  --accent-hover: #3a5c9e;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --transition-time: 0.3s;
+}
+
+/* -----------------------------------------------------------------------
+   Site-wide font & color pass (applies to every page via _layouts/default.liquid)
+   ----------------------------------------------------------------------- */
+
+body {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--accent-color);
+  transition: color var(--transition-time) ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.site-nav {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+}
+
+.site-nav-inner {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-nav-brand {
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.site-nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--accent-color);
+}
+
+.site-main {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.site-footer {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* -----------------------------------------------------------------------
+   Homepage (_layouts/about.liquid): single-column academic layout
+   ----------------------------------------------------------------------- */
+
+#top {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-weight: 300;
+}
+
+#top header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#top .header-content {
+  flex: 1;
+}
+
+#top .header-image img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+}
+
+#top .header-image img.circular {
+  border-radius: 50%;
+}
+
+#top .header-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+#top h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+#top .subtitle {
+  color: var(--text-secondary);
+  margin: 0.25rem 0;
+}
+
+#top h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 1.75rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: -0.01em;
+}
+
+#top .social-links-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1.2rem 0;
+}
+
+#top .social-links-header a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all var(--transition-time) ease;
+  font-weight: 400;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+#top .social-links-header a:hover {
+  color: var(--accent-color);
+  background-color: rgba(74, 116, 185, 0.08);
+}
+
+#top .social-links-header a i {
+  margin-right: 0.4rem;
+}
+
+#top section {
+  margin-bottom: 2rem;
+  scroll-margin-top: 1rem;
+  width: 100%;
+}
+
+#top .more-info {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+#top .publications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+#top .toggle-publications {
+  background-color: rgba(74, 116, 185, 0.08);
+  color: var(--accent-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-time) ease;
+}
+
+#top .toggle-publications:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+#top .news-container.scrollable {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#top .news-list {
+  padding-left: 0;
+  list-style-type: none;
+  margin: 0.5rem 0;
+}
+
+#top .news-list li {
+  margin-bottom: 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(74, 116, 185, 0.2);
+  padding-bottom: 0.7rem;
+}
+
+#top .news-list li:hover {
+  border-left-color: var(--accent-color);
+}
+
+#top .award-item {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+#top .award-year {
+  font-weight: 500;
+  color: var(--accent-color);
+  flex: 0 0 80px;
+}
+
+#top .award-desc {
+  flex: 1;
+}
+
+#top .service-title {
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  color: var(--accent-color);
+}
+
+#top .service-category p,
+#top .misc-item p {
+  margin: 0.25rem 0 0.75rem;
+}
+
+#top footer {
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #top header {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  #top .social-links-header {
+    justify-content: center;
+  }
+}

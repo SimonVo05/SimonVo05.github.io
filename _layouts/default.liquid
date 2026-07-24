@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.first_name | append: ' ' | append: site.last_name }}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;500;600&display=swap">
+  {% al_icons_styles %}
+  {% al_cookie_styles %}
+  {% al_math_styles %}
+  {% al_img_tools_styles %}
+  <link rel="stylesheet" href="{{ '/assets/tailwind/app.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/custom-theme.css' | relative_url }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="{{ '/' | relative_url }}">{{ site.title | default: site.first_name | append: ' ' | append: site.last_name }}</a>
+      <ul class="site-nav-links">
+        {% assign nav_pages = site.pages | where: "nav", true | sort: "nav_order" %}
+        {% for item in nav_pages %}
+        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    {{ site.footer_text }}
+  </footer>
+
+  {% al_search_assets %}
+  {% al_cookie_scripts %}
+  {% al_math_scripts %}
+  {% al_charts_scripts %}
+  {% al_img_tools_scripts %}
+  {% al_analytics_scripts %}
+  {% al_newsletter_scripts %}
+</body>
+</html>
