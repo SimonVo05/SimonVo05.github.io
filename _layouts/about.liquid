@@ -45,10 +45,78 @@ layout: null
       {% endif %}
     </section>
 
-    {% if page.research_statement %}
+    {% if page.education.enabled and page.education.items.size > 0 %}
+    <section id="education">
+      <h2>Education</h2>
+      {% for edu in page.education.items %}
+      <div class="education-item">
+        <div class="edu-header">
+          <span class="edu-school">{{ edu.school }}</span>
+          {% if edu.dates %}<span class="edu-dates">{{ edu.dates }}</span>{% endif %}
+        </div>
+        <div class="edu-degree">{{ edu.degree }}</div>
+        {% if edu.details %}<div class="edu-details">{{ edu.details }}</div>{% endif %}
+        {% if edu.coursework %}<div class="edu-coursework">{{ edu.coursework }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if page.skills.enabled and page.skills.categories.size > 0 %}
+    <section id="skills">
+      <h2>Skills</h2>
+      {% for cat in page.skills.categories %}
+      <div class="skill-category">
+        <span class="skill-title">{{ cat.title }}:</span> <span class="skill-list">{{ cat.items }}</span>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if page.experience.enabled and page.experience.items.size > 0 %}
+    <section id="experience">
+      <h2>Experience</h2>
+      {% for job in page.experience.items %}
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">{{ job.title }}</span>{% if job.org %}, <span class="exp-org">{{ job.org }}</span>{% endif %}
+          {% if job.dates %}<span class="exp-dates">{{ job.dates }}</span>{% endif %}
+        </div>
+        {% if job.bullets %}
+        <ul class="exp-bullets">
+          {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if page.research_statement or page.projects.enabled %}
     <section id="research">
       <h2>Research</h2>
-      <p>{{ page.research_statement }}</p>
+      {% if page.research_statement %}<p>{{ page.research_statement }}</p>{% endif %}
+      {% if page.projects.enabled and page.projects.items.size > 0 %}
+      <div class="projects-list">
+        {% for project in page.projects.items %}
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-title">{{ project.title }}</span>
+            {% if project.dates %}<span class="project-dates">{{ project.dates }}</span>{% endif %}
+          </div>
+          {% if project.tech %}<div class="project-tech">{{ project.tech }}</div>{% endif %}
+          {% if project.bullets %}
+          <ul class="project-bullets">
+            {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% if page.projects.github %}
+      <p class="projects-link"><a href="{{ page.projects.github }}" target="_blank"><i class="fa-brands fa-github"></i> More projects on GitHub</a></p>
+      {% endif %}
+      {% endif %}
     </section>
     {% endif %}
 
@@ -102,6 +170,18 @@ layout: null
       <div class="award-item">
         <span class="award-year">{{ award.year }}</span>
         <div class="award-desc">{{ award.description }}</div>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if page.competitions.enabled and page.competitions.items.size > 0 %}
+    <section id="competitions">
+      <h2>Competitions</h2>
+      {% for comp in page.competitions.items %}
+      <div class="service-category">
+        <div class="service-title">{{ comp.title }}</div>
+        <p>{{ comp.description }}</p>
       </div>
       {% endfor %}
     </section>
