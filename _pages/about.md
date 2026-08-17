@@ -6,7 +6,7 @@ subtitle: Computer Science Student • University of Utah
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: 
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Salt Lake City, Utah 84102</p>
