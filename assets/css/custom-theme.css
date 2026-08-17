@@ -128,19 +128,6 @@ a:hover {
   flex: 1;
 }
 
-#top .header-image img {
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  border: 2px solid var(--border-color);
-  transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
-}
-
-#top .header-image img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px var(--shadow-color);
-}
-
 #top h1 {
   font-size: 2.2rem;
   font-weight: 500;
